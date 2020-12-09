@@ -54,7 +54,7 @@ window.addEventListener("DOMContentLoaded", function () {
   // Success and Error functions for after the form is submitted
   function success() {
     contactForm.reset();
-    contactFormBtn.style = "display: none "; //!!!!!!!!Change to visibility: hidden
+    contactFormBtn.style = "display: none ";
     contactFormStatus.innerHTML = "Thanks!";
   }
 
