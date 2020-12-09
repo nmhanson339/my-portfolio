@@ -151,20 +151,27 @@
         <div class="contact-area-content">
           <form
             id="portfolio-contact"
-            action="www.example.com"
-            method="get"
+            action="https://formspree.io/f/xbjpzgbp"
+            method="POST"
             class="contact-form"
           >
             <label for="GET-name">Name:</label>
-            <input id="GET-name" type="text" name="name" maxlength="40" />
+            <input
+              id="GET-name"
+              type="text"
+              name="name"
+              maxlength="40"
+              required
+            />
             <label for="GET-email">Email:</label>
             <input
               id="GET-email"
               type="email"
-              name="email"
+              name="_replyto"
               maxlength="40"
               required
             />
+            <input type="hidden" name="_subject" value="Portfolio Contact" />
             <label for="GET-text">Message:</label>
             <textarea
               id="GET-text"
@@ -177,6 +184,7 @@
             <div class="btn-wrapper">
               <input type="submit" value="Send" class="submit-btn" />
             </div>
+            <p id="my-form-status"></p>
           </form>
         </div>
       </section>
