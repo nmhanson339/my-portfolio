@@ -1,4 +1,4 @@
-// HTML ELEMENTS
+// - - - - -HTML ELEMENTS - - - - -
 let header = document.querySelector(".page-header");
 let headerNav = document.querySelector(".header-nav");
 let headerNavBtn = document.querySelector(".header-nav-btn");
@@ -6,7 +6,7 @@ let contactForm = document.getElementById("portfolio-contact");
 let contactFormBtn = document.getElementById("GET-submission");
 let contactFormStatus = document.getElementById("contact-form-status");
 
-// EVENT LISTENERS
+// - - - - - EVENT LISTENERS - - - - -
 headerNavBtn.addEventListener(
   "click",
   toggleAccordionMenu.bind(headerNavBtn, headerNav, header)
@@ -14,14 +14,14 @@ headerNavBtn.addEventListener(
 
 headerNavBtn.addEventListener("click", toggleMenuIcon.bind(headerNavBtn));
 
-// handle the form submission event
+// Handle the form submission event
 contactForm.addEventListener("submit", function (ev) {
   ev.preventDefault();
   var data = new FormData(contactForm);
   ajax(contactForm.method, contactForm.action, data, success, error);
 });
 
-// FUNCTIONS
+// - - - - - FUNCTIONS - - - - -
 function toggleMenuIcon() {
   this.classList.toggle("toggleMenuIcon");
 }
@@ -29,20 +29,20 @@ function toggleMenuIcon() {
 function toggleAccordionMenu(menu, menuParent) {
   const menuItems = menu.children[0].children.length; // Represents list items in unordered list element
   const parentHeight = menuParent.clientHeight;
-  console.log("menuItems, parentHeight:", menuItems, parentHeight);
 
   if (menu.clientHeight >= parentHeight) {
-    // Vertically transform menu from hidden overflow position. Expand height of menu's parent.
     menu.style.transform = `translateY( ${parentHeight * menuItems}px)`;
     menuParent.style.height = `${parentHeight * (menuItems + 1)}px`;
+    // Vertically transform menu's highest point downward until it no longer overflows its parent.
     menu.style.transition = `transform 1s ease-in-out`;
+    // Expand height of menu's parent until menu is fully visible.
     menuParent.style.transition = `height 1s ease-in-out`;
-    menu.classList.add("menuOpened");
   } else {
-    // Vertically transform menu to hidden overflow position. Shrink height of menu's parent.
     menu.style.transform = `translateY(0px)`;
     menuParent.style.height = `${parentHeight / (menuItems + 1)}px`;
+    // Vertically transform menu's lowest point upward until it overflows its parent.
     menu.style.transition = `transform 0.8s ease-in-out`;
+    // Shrink height of menu's parent.
     menuParent.style.transition = `height 0.8s ease-in-out`;
   }
 }
@@ -61,8 +61,7 @@ function error() {
   contactFormStatus.innerHTML = "Oops! There was a problem.";
 }
 
-// helper function for sending an AJAX request
-
+// Helper function for sending an AJAX request
 function ajax(method, url, data, success, error) {
   var xhr = new XMLHttpRequest();
   xhr.open(method, url);
